@@ -1,0 +1,24 @@
+@page "/powerbi"
+@layout ReportsLayout
+
+<h1>Power BI Reports</h1>
+
+<hr>
+<Card 
+    Title="Armed Conflicts" 
+    Subtitle="Lebanon" 
+    Description="A Power BI report representing the armed conflicts in Lebanon since 2016" 
+    Link="powerbi/reports/armed-conflicts" 
+/>
+
+<Card 
+    Title="COVID-19" 
+    Subtitle="World" 
+    Description="A Power BI report representing COVID-19 around the world" 
+    Link="powerbi/reports/covid-19" 
+/>
+
+@code {
+    public string Title = "Power BI";
+
+}

@@ -1,0 +1,47 @@
+@page "/powerbi/reports/covid-19"
+@layout ReportsLayout
+@using Datanalys.Services
+@inject BrowserService Service
+
+<PageTitle Title="Datanalys - Armed Conflicts" @ref="PageTitle" />
+
+<div class="w-100" id="armed-conflicts">
+ @if(Width < 450) {
+     
+     <iframe width="@Width" height="2200" src="https://app.powerbi.com/view?r=eyJrIjoiMTg1ZGU4MWYtZmViZC00YmMxLWEyOTUtMTE4NWZiZmVlZjlhIiwidCI6ImM1NjBhZWYxLTUzZWUtNDU0NS1iYjk5LWZkNTk0NTY0ZTE2NCIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>
+ }
+ else {
+     <iframe width="@Width" height="@Height" src="https://app.powerbi.com/view?r=eyJrIjoiNGQ0ODVkMzYtNDU0OS00MWMxLWIxMjYtNTYyNjU4ZTMyZmNmIiwidCI6ImM1NjBhZWYxLTUzZWUtNDU0NS1iYjk5LWZkNTk0NTY0ZTE2NCIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>
+ }
+</div>
+
+
+
+@code {
+    private PageTitle PageTitle;
+    public int Height { get; set; }
+    public int Width { get; set; }
+
+    async Task GetDimensions() {
+        var dimension = await Service.GetDimensions();
+        Height = dimension.Height;
+
+        //This code is because Power BI report max width is 1200
+        if(dimension.Width < 1200) {
+            Width = dimension.Width;
+        }
+        else {
+            Width = 1200;
+        }
+        
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetDimensions();
+    }
+
+
+
+
+}

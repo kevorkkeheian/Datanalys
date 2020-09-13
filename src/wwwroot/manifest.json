@@ -1,0 +1,44 @@
+{
+  "name": "Datanalys",
+  "short_name": "Datanalys",
+  "start_url": "https://datanalys.ml/",
+  "display": "standalone",
+  "background_color": "#F2C80F",
+  "theme_color": "#03173D",
+  "icons": [
+      {
+          "src": "https://datanalys.ml/icon-512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+      }
+  ],
+  "shortcuts": [
+      {
+          "name": "Armed Conflicts Report",
+          "short_name": "Armed Conflicts",
+          "description": "View the armed conflicts in lebanon",
+          "url": "/powerbi/reports/armed-conflicts",
+          "icons": [
+              {
+                  "src": "/icon-512.png",
+                  "sizes": "192x192"
+              }
+          ]
+      },
+      {
+          "name": "COVID-19 Report",
+          "short_name": "COVID-19",
+          "description": "View COVID-19 cases around the world",
+          "url": "/powerbi/reports/covid-19",
+          "icons": [
+              {
+                  "src": "/icon-512.png",
+                  "sizes": "192x192"
+              }
+          ]
+      }
+  ],
+  "url": "https://datanalys.ml",
+  "lang": "",
+  "screenshots": []
+}
