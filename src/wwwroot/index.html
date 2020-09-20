@@ -4,10 +4,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title></title>
+    <title>Datanalys</title>
     <base href="/" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
+    <link href="css/blog.css" rel= "stylesheet" />
     <link href="_framework/scoped.styles.css" rel="stylesheet" />
     <link href="manifest.json" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
@@ -16,11 +17,21 @@
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link href="css/material.css" rel= "stylesheet" />
+
+
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+
+    <!--Facebook Share-->
+    <meta property="og:title" content="Datanalys">
+    <meta property="og:image" content="https://datanalys.ml/assets/images/fb.png">
+    <meta property="og:description"   content="Check it Out!" />
 </head>
 
 <body>
     <div id="app" class="text-center">
-        <img src="assets/loading.svg" class="mt-50"/>
+        <img src="assets/loading.svg" class="mt-25"/>
     </div>
 
     <div id="blazor-error-ui">
@@ -33,6 +44,18 @@
     <script>navigator.serviceWorker.register('service-worker.js');</script>
     <!--Material Design-->
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+
+
+    <!--Firebase-->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="js/firebase/init.js"></script>
 </body>
 
 </html>
