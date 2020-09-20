@@ -1,4 +1,4 @@
-@page "/powerbi/reports/covid-19"
+@page "/powerbi/samples/ax/exception-log"
 @layout ReportsLayout
 @using Datanalys.Services
 @inject BrowserService Service
@@ -27,9 +27,9 @@
 
  @if(Width < 450) {
      DownloadLink = "https://github.com/kevorkkeheian/Datanalys/raw/master/power-bi/reports/covid-19/COVID19%20%5BMobile%5D.pbix";
-     <div class="row">
+     <div class="row ml-1">
          @*Power BI Report*@
-         <iframe width="@Width" height="2200" src="https://app.powerbi.com/view?r=eyJrIjoiMTg1ZGU4MWYtZmViZC00YmMxLWEyOTUtMTE4NWZiZmVlZjlhIiwidCI6ImM1NjBhZWYxLTUzZWUtNDU0NS1iYjk5LWZkNTk0NTY0ZTE2NCIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>
+         <PowerBIReport Width = "@Width" Height = "1800" Source = "https://app.powerbi.com/view?r=eyJrIjoiYWE1MjY2MDEtMjI0ZS00MjEzLWE1YzMtMDI3YTZlNzhmNWMyIiwidCI6ImM1NjBhZWYxLTUzZWUtNDU0NS1iYjk5LWZkNTk0NTY0ZTE2NCIsImMiOjl9" />
      </div>
      
  }
@@ -37,12 +37,16 @@
 
 
  else {
-     DownloadLink = "https://github.com/kevorkkeheian/Datanalys/raw/master/power-bi/reports/covid-19/COVID19%20%5BDesktop%5D.pbix";
+     @* DownloadLink = "https://github.com/kevorkkeheian/Datanalys/raw/master/power-bi/reports/covid-19/COVID19%20%5BDesktop%5D.pbix";
      <div class="row mt-5">
          <iframe width="@Width" height="@Height" src="https://app.powerbi.com/view?r=eyJrIjoiNGQ0ODVkMzYtNDU0OS00MWMxLWIxMjYtNTYyNjU4ZTMyZmNmIiwidCI6ImM1NjBhZWYxLTUzZWUtNDU0NS1iYjk5LWZkNTk0NTY0ZTE2NCIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>
-     </div>
+     </div> *@
+     <p>Comming Soon</p>
  }
 </div>
+
+
+
 
 
 
