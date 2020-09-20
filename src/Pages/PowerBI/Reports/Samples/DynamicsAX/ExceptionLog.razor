@@ -1,0 +1,84 @@
+@page "/powerbi/samples/ax/exception-log"
+@layout ReportsLayout
+@using Datanalys.Services
+@inject BrowserService Service
+
+<PageTitle Title="Datanalys - Armed Conflicts" @ref="PageTitle" />
+
+
+
+<div class="w-100" id="armed-conflicts">
+<div class="row">
+        
+         <div class="col">
+             @*Facebook Share Button*@
+             <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdatanalys.ml%2Fpowerbi%2Freports%2Fcovid-19&layout=button_count&size=large&appId=349367796179685&width=88&height=28" width="88" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+         </div>
+         <div class="col">
+             @*Download Report Button*@
+            <a class="mdc-button mdc-button--outlined" href="@DownloadLink">
+                <div class="mdc-button__ripple"></div>
+                <i class="material-icons mdc-button__icon" aria-hidden="true">get_app</i>
+                <span class="mdc-button__label">Download</span>
+            </a>
+         </div>
+
+     </div>
+
+ @if(Width < 450) {
+     DownloadLink = "https://github.com/kevorkkeheian/Datanalys/raw/master/power-bi/reports/covid-19/COVID19%20%5BMobile%5D.pbix";
+     <div class="row ml-1">
+         @*Power BI Report*@
+         <PowerBIReport Width = "@Width" Height = "1800" Source = "https://app.powerbi.com/view?r=eyJrIjoiYWE1MjY2MDEtMjI0ZS00MjEzLWE1YzMtMDI3YTZlNzhmNWMyIiwidCI6ImM1NjBhZWYxLTUzZWUtNDU0NS1iYjk5LWZkNTk0NTY0ZTE2NCIsImMiOjl9" />
+     </div>
+     
+ }
+
+
+
+ else {
+     @* DownloadLink = "https://github.com/kevorkkeheian/Datanalys/raw/master/power-bi/reports/covid-19/COVID19%20%5BDesktop%5D.pbix";
+     <div class="row mt-5">
+         <iframe width="@Width" height="@Height" src="https://app.powerbi.com/view?r=eyJrIjoiNGQ0ODVkMzYtNDU0OS00MWMxLWIxMjYtNTYyNjU4ZTMyZmNmIiwidCI6ImM1NjBhZWYxLTUzZWUtNDU0NS1iYjk5LWZkNTk0NTY0ZTE2NCIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>
+     </div> *@
+     <p>Comming Soon</p>
+ }
+</div>
+
+
+
+
+
+
+@code {
+    private PageTitle PageTitle;
+    public int Height { get; set; }
+    public int Width { get; set; }
+    public string DownloadLink ="";
+
+    async Task GetDimensions()
+    {
+        var dimension = await Service.GetDimensions();
+        Height = dimension.Height;
+
+        //This code is because Power BI report max width is 1200
+        if (dimension.Width < 1200)
+        {
+            Width = dimension.Width;
+        }
+        else
+        {
+            Width = 1200;
+        }
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetDimensions();
+    }
+
+
+
+
+}
