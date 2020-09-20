@@ -6,12 +6,38 @@
 <PageTitle Title="Datanalys - Armed Conflicts" @ref="PageTitle" />
 
 <div class="w-100" id="armed-conflicts">
+<div class="row">
+         <div class="col">
+             <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdatanalys.ml%2Fpowerbi%2Freports%2Farmed-conflicts&layout=button_count&size=large&appId=349367796179685&width=88&height=28" width="88" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+         </div>
+         <div class="col">
+        <a class="mdc-button mdc-button--outlined" href="@DownloadLink">
+            <div class="mdc-button__ripple"></div>
+            <i class="material-icons mdc-button__icon" aria-hidden="true">get_app</i>
+            <span class="mdc-button__label">Download</span>
+        </a>
+         </div>
+     </div>
+
  @if(Width < 450) {
-     
+
+     DownloadLink = "https://github.com/kevorkkeheian/Datanalys/raw/master/power-bi/reports/armed-conflicts/Armed%20Conflicts%20-%20Lebanon%20%5BMobile%5D.pbix";
+
+    <div class="row">
      <iframe width="@Width" height="2200" src="https://app.powerbi.com/view?r=eyJrIjoiNzUxYTZhMTItY2RmYS00MDc2LThlNTgtMjc3M2NjNmI5MDJiIiwidCI6ImM1NjBhZWYxLTUzZWUtNDU0NS1iYjk5LWZkNTk0NTY0ZTE2NCIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+ 
  }
+
+
  else {
-     <iframe width="@Width" height="@Height" src="https://app.powerbi.com/view?r=eyJrIjoiMTNlNjM5MDUtZjBjZC00NDRiLWJjZGEtODIxY2MxZDRiZjgyIiwidCI6ImM1NjBhZWYxLTUzZWUtNDU0NS1iYjk5LWZkNTk0NTY0ZTE2NCIsImMiOjl9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
+     
+     DownloadLink = "https://github.com/kevorkkeheian/Datanalys/raw/master/power-bi/reports/armed-conflicts/Armed%20Conflicts%20-%20Lebanon%20%5BDesktop%5D.pbix";
+
+    <div class="row">
+        <iframe width="@Width" height="@Height" src="https://app.powerbi.com/view?r=eyJrIjoiMTNlNjM5MDUtZjBjZC00NDRiLWJjZGEtODIxY2MxZDRiZjgyIiwidCI6ImM1NjBhZWYxLTUzZWUtNDU0NS1iYjk5LWZkNTk0NTY0ZTE2NCIsImMiOjl9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+     
  }
 </div>
 
@@ -21,19 +47,23 @@
     private PageTitle PageTitle;
     public int Height { get; set; }
     public int Width { get; set; }
+    public string DownloadLink ="";
 
-    async Task GetDimensions() {
+    async Task GetDimensions()
+    {
         var dimension = await Service.GetDimensions();
         Height = dimension.Height;
 
         //This code is because Power BI report max width is 1200
-        if(dimension.Width < 1200) {
+        if (dimension.Width < 1200)
+        {
             Width = dimension.Width;
         }
-        else {
+        else
+        {
             Width = 1200;
         }
-        
+
     }
 
     protected override async Task OnInitializedAsync()
