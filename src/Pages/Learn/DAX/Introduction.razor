@@ -1,0 +1,118 @@
+@page "/learn/dax/intro"
+
+
+<div class="container mb-5">
+
+
+  <div class="image-frame">
+    <img class="cover-image" src="https://res.cloudinary.com/practicaldev/image/fetch/s---z_fsSti--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/8l5uzy6r6ho5ms64u4l3.jpg"/>
+  </div>
+
+
+  <h1 class="mt-5">Introduction to DAX</h1>
+
+  <div class="text-left mt-5 blog">
+  <h2 class="mt-5">1 - Introduction</h2>
+  <hr>
+  <p>DAX is mainly used to add calculations to the Power BI Model</p>
+
+    <ul>
+        <li>Calculated Tables</li>
+        <li>Calculated Columns</li>
+        <li>Measures</li>
+    </ul>
+
+    <p>It can also be used to define RLS <a href="https://docs.microsoft.com/en-us/power-bi/admin/service-admin-rls">(Row-Level Security)</a></p>
+
+
+    <br />
+    <br />
+
+    <h2 class="mt-3">2 - Calculated Tables:</h2>
+    <hr>
+    <p>Regarding the calculated tables, DAX is used to whether duplicate or transform an existing model data, create a series data or even produce a new table.
+    Cons: It increases the model storage size which could prolong the data refresh durations:</p>
+
+    <p><strong>Examples:</strong><em> Date tables, Role playing dimensions, what-if analysis, etc...</em></p>
+
+    <blockquote>
+    <p class="mx-3"><strong>Note:</strong> <em>Calculated table can't connect to external data. You need to use Power Query to do that.</em></p>
+    </blockquote>
+
+    <h3 class="mt-5">
+      a - Date Table:
+    </h3>
+
+    <p>Date tables are mostly used for special filters as time intelligence.<br>
+    For example if you have a model with missing dates and you want to calculate the average per date and the calculation requires the missing dates (ex: holidays), you need to create a date table table with one to many relation to do an accurate calculation.<br>
+    EX: <code>CALENDAR</code> and <code>CALENDARAUTO</code></p>
+
+
+    <h3 class="mt-5">
+      b - Role-playing dimensions:
+    </h3>
+    <p>The Date table can also be defined as role-playing dimension.<br>
+    This happens when table has two date fields that are related to Date column in Date Table.<br>
+    (EX: <code>[Sales].OrderedDate</code> and <code>[Sales].DeliveredDate</code> ----&gt; <code>[DateTable].Date</code><br>
+    In this case the Date table's Date column is playing the role of Ordered Date and Delivered Date of Sales Table.</p>
+
+    <blockquote>
+    <p class="mx-3"><strong>Note</strong>: <em>Power BI models allow only one active relationship between tables.</em></p>
+    </blockquote>
+    <p>
+        <a href="https://res.cloudinary.com/practicaldev/image/fetch/s--2eA75Td_--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/6yduw6paznpjtni8avcx.png" class="article-body-image-wrapper"><img src="https://res.cloudinary.com/practicaldev/image/fetch/s--2eA75Td_--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/6yduw6paznpjtni8avcx.png" alt="Alt Text" loading="lazy"></a>
+    </p>
+
+    <p>So, if you create 2 relations between 2 tables in the Power BI model one of them will be active (solid line) and the other not (dotted line).
+      <br>
+    But the only way you can use this inactive relation using 
+    <code>USERELATIONSHIP</code> DAX function.
+    <br>
+    Another way is to create 2 date tables.</p>
+
+
+    <a href="https://res.cloudinary.com/practicaldev/image/fetch/s--gFfksKTP--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/tipoddzvy02h5ix64940.png" class="article-body-image-wrapper"><img src="https://res.cloudinary.com/practicaldev/image/fetch/s--gFfksKTP--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/tipoddzvy02h5ix64940.png" alt="Alt Text" loading="lazy"></a>
+
+
+    <h3 class="mt-5">
+      c - What-if analysis:
+    </h3>
+
+    <p>What-if analysis is a featured supported in Power BI. It is a parameter that when created automatically adds a calculated table to the model.<br>
+    They allow selection of filter by value stored in the calculated tables.</p>
+
+    <h2 class="mt-5">
+      2 - Calculated Columns:
+    </h2>
+    <hr>
+    <p>As we mentioned earlier, DAX can also be used to add calculated columns.
+      <br>
+    </p>
+
+
+
+    <p>It only differs if the connection is Import or Direct Query. <br>
+     When a calculated column is added to an Import storage  mode table, 
+     the calculated column is evaluated on refresh which increases the size of the model. 
+     But when added to a Direct Query storage mode the calculation is evaluated by the 
+     underlying source database upon querying the table.</p>
+
+
+
+    <h2>
+      3 - Measures:
+    </h2>
+
+    <p>Finally, you can write DAX formulas to add measures. It is used to summarize the model data.</p>
+
+    <p>For example: <code>Revenue = SUM(Sales[Sales Amount])</code></p>
+
+    <p>Where Sales is the name of the table and Sales Amount is the name of the column that we are calculating.<br>
+     Unlike calculated columns the returned value of a measure is never stored in the model and the formula is assessed at query time. So, the storage size of the model is affected.</p>
+
+
+
+
+
+  </div>
+</div>
